@@ -4,17 +4,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        'primary': {
+        primary: {
           50: '#f8f7f5',  // stone-50
           700: '#0f766e', // teal-700
         },
-        'dark': '#0f172a',  // slate-900
+        dark: '#0f172a',  // slate-900
         'white': '#ffffff',
         'transparent': 'transparent',
         'current': 'currentColor',
       },
       fontFamily: {
-        'sans': ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
       },
     },
   },

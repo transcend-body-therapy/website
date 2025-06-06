@@ -1,0 +1,81 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const services = [
+  {
+    title: 'Massage Therapy',
+    description: 'Experience relief from tension and stress through our customized massage treatments.',
+    benefits: ['Pain relief', 'Muscle relaxation', 'Improved circulation', 'Stress reduction'],
+    link: '/services/massage',
+    duration: '60-90 minutes',
+  },
+  {
+    title: 'Energy Work',
+    description: 'Restore balance and vitality with our holistic energy healing techniques.',
+    benefits: ['Energy balancing', 'Chakra alignment', 'Emotional release', 'Spiritual connection'],
+    link: '/services/energy',
+    duration: '45-60 minutes',
+  },
+  {
+    title: 'Combination Therapy',
+    description: 'The best of both worlds: massage therapy combined with energy work for complete healing.',
+    benefits: ['Deep relaxation', 'Physical & energetic healing', 'Stress relief', 'Enhanced well-being'],
+    link: '/services/combo',
+    duration: '90-120 minutes',
+  },
+];
+---
+
+<MainLayout
+  title="Our Services"
+  description="Explore our range of therapeutic services including massage therapy, energy work, and combination treatments."
+>
+  <div class="bg-white py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h1 class="text-4xl font-bold text-primary-700 mb-4">Our Services</h1>
+        <p class="text-lg text-dark/80 max-w-2xl mx-auto">
+          Choose from our range of therapeutic treatments designed to promote healing, relaxation, and overall well-being.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {
+          services.map(({ title, description, benefits, link, duration }) => (
+            <div class="bg-primary-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+              <div class="p-6">
+                <h2 class="text-2xl font-semibold text-primary-700 mb-3">{title}</h2>
+                <p class="text-dark/80 mb-4">{description}</p>
+                <p class="text-sm text-primary-700 mb-4">Duration: {duration}</p>
+                <h3 class="text-lg font-medium text-primary-700 mb-2">Benefits:</h3>
+                <ul class="list-disc list-inside text-dark/80 mb-6">
+                  {benefits.map((benefit) => (
+                    <li>{benefit}</li>
+                  ))}
+                </ul>
+                <a
+                  href={link}
+                  class="inline-block bg-primary-700 text-white px-6 py-2 rounded-lg font-medium hover:bg-primary-700/90 transition-colors"
+                >
+                  Learn More
+                </a>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="text-center mt-16">
+        <p class="text-lg text-dark/80 mb-8">
+          Not sure which service is right for you? Contact us for a consultation.
+        </p>
+        <a
+          href="/contact"
+          class="inline-block bg-primary-700 text-white px-8 py-3 rounded-lg font-medium hover:bg-primary-700/90 transition-colors"
+        >
+          Schedule a Consultation
+        </a>
+      </div>
+    </div>
+  </div>
+</MainLayout> 

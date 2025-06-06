@@ -1,0 +1,47 @@
+---
+const businessInfo = {
+  name: 'Transcend Body Therapy',
+  address: '123 Healing Street, Suite 100',
+  city: 'Portland, OR 97201',
+  phone: '(503) 555-0123',
+  hours: {
+    weekdays: '9:00 AM - 7:00 PM',
+    weekends: '10:00 AM - 5:00 PM',
+  },
+};
+---
+
+<footer class="bg-white mt-auto">
+  <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+      <!-- Logo and Name -->
+      <div class="text-center md:text-left">
+        <h3 class="text-lg font-semibold text-primary-700">{businessInfo.name}</h3>
+      </div>
+
+      <!-- Address and Phone -->
+      <div class="text-center md:text-left">
+        <p class="text-dark/80">{businessInfo.address}</p>
+        <p class="text-dark/80">{businessInfo.city}</p>
+        <a href={`tel:${businessInfo.phone}`} class="text-primary-700 hover:text-primary-700/80">
+          {businessInfo.phone}
+        </a>
+      </div>
+
+      <!-- Hours -->
+      <div class="text-center md:text-left">
+        <p class="text-dark/80">
+          Mon-Fri: {businessInfo.hours.weekdays}
+        </p>
+        <p class="text-dark/80">
+          Sat-Sun: {businessInfo.hours.weekends}
+        </p>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="mt-8 pt-8 border-t border-primary-50 text-center text-sm text-dark/60">
+      <p>&copy; {new Date().getFullYear()} {businessInfo.name}. All rights reserved.</p>
+    </div>
+  </div>
+</footer> 

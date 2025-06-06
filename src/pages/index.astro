@@ -1,45 +1,82 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
+import Carousel from '../components/Carousel.astro';
 
 const services = [
   {
     title: 'Massage Therapy',
-    description: 'Customized massage treatments to relieve tension and promote relaxation.',
+    description: 'Experience deep relaxation and healing through customized massage treatments. Our skilled therapists blend techniques to address your specific needs and promote overall wellness.',
+    image: '/images/massage.jpg',
     link: '/services/massage',
   },
   {
     title: 'Energy Work',
-    description: 'Holistic energy healing to restore balance and vitality.',
+    description: 'Restore balance and vitality with our holistic energy healing sessions. Using gentle techniques, we help clear blockages and enhance your body's natural healing abilities.',
+    image: '/images/energy.jpg',
     link: '/services/energy',
   },
   {
-    title: 'Combination Therapy',
-    description: 'Integrated approach combining massage and energy work for optimal healing.',
+    title: 'Combo Packages',
+    description: 'Get the best of both worlds with our integrated approach. Combining massage and energy work creates a powerful synergy for optimal physical and energetic healing.',
+    image: '/images/combo.jpg',
     link: '/services/combo',
   },
+];
+
+const testimonials = [
+  {
+    quote: "The combination of massage and energy work was exactly what I needed. I left feeling completely renewed and balanced.",
+    author: "Sarah M."
+  },
+  {
+    quote: "Best therapeutic massage I've ever had. The attention to detail and care is outstanding.",
+    author: "Michael R."
+  },
+  {
+    quote: "A truly transformative experience. The energy work helped me release old patterns I'd been holding onto.",
+    author: "Jennifer L."
+  }
 ];
 ---
 
 <MainLayout
-  title="Holistic Healing & Massage"
-  description="Experience transformative healing through professional massage therapy and energy work in Portland, Oregon."
+  title="Transcend Body Therapy | Massage & Energy Work in Stuart, FL"
+  description="Experience transformative healing through professional massage therapy and energy work in Stuart, Florida."
 >
   <!-- Hero Section -->
-  <section class="relative bg-primary-700 text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
-      <div class="text-center">
-        <h1 class="text-4xl md:text-5xl font-bold mb-6">
-          Transform Your Well-being
+  <section class="relative h-screen min-h-[600px] max-h-[800px]">
+    <picture class="absolute inset-0 w-full h-full">
+      <source srcset="/images/hero-desktop.webp" media="(min-width: 768px)" />
+      <source srcset="/images/hero-mobile.webp" />
+      <img
+        src="/images/hero-desktop.jpg"
+        alt="Peaceful massage therapy room"
+        class="w-full h-full object-cover"
+      />
+    </picture>
+    <div class="absolute inset-0 bg-dark/40"></div>
+    <div class="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
+      <div class="text-white max-w-2xl">
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
+          Relax. Heal.<br />Transcend.
         </h1>
-        <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
-          Experience deep healing and relaxation through our holistic approach to body therapy
+        <p class="text-xl md:text-2xl mb-8 text-white/90">
+          Therapeutic massage & energy work in Stuart, FL.
         </p>
-        <a
-          href="/contact"
-          class="inline-block bg-white text-primary-700 px-8 py-3 rounded-lg font-medium hover:bg-primary-50 transition-colors"
-        >
-          Book Your Session
-        </a>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a
+            href="#contact"
+            class="inline-block bg-primary-700 text-white px-8 py-4 rounded-lg font-medium hover:bg-primary-700/90 transition-colors text-center"
+          >
+            Book a Session
+          </a>
+          <a
+            href="/gift-certificates"
+            class="inline-block bg-white text-primary-700 px-8 py-4 rounded-lg font-medium hover:bg-white/90 transition-colors text-center"
+          >
+            Buy a Gift Certificate
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -47,16 +84,24 @@ const services = [
   <!-- Services Section -->
   <section class="py-16 md:py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold text-center mb-12">Our Services</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {
-          services.map(({ title, description, link }) => (
+          services.map(({ title, description, image, link }) => (
             <a
               href={link}
-              class="block p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow bg-primary-50"
+              class="group block overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              <h3 class="text-xl font-semibold text-primary-700 mb-3">{title}</h3>
-              <p class="text-dark/80">{description}</p>
+              <div class="aspect-w-16 aspect-h-9 overflow-hidden">
+                <img
+                  src={image}
+                  alt={title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div class="p-6 bg-white">
+                <h3 class="text-xl font-semibold text-primary-700 mb-3">{title}</h3>
+                <p class="text-dark/80 line-clamp-3">{description}</p>
+              </div>
             </a>
           ))
         }
@@ -67,35 +112,23 @@ const services = [
   <!-- Testimonial Section -->
   <section class="py-16 md:py-24 bg-primary-50">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl font-bold mb-8">What Our Clients Say</h2>
-      <blockquote class="text-lg italic text-dark/80 mb-6">
-        "The combination of massage and energy work was exactly what I needed. I left feeling completely renewed and balanced."
-      </blockquote>
-      <p class="font-medium text-primary-700">- Sarah M.</p>
+      <h2 class="text-3xl font-bold mb-12">What Our Clients Say</h2>
+      <Carousel items={testimonials} />
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section class="py-16 md:py-24 bg-white">
+  <!-- Promo Banner -->
+  <section class="bg-primary-700 text-white py-12">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl font-bold mb-6">Ready to Begin Your Healing Journey?</h2>
-      <p class="text-lg text-dark/80 mb-8">
-        Book your session today and experience the transformative power of our therapeutic treatments.
-      </p>
-      <div class="space-x-4">
-        <a
-          href="/contact"
-          class="inline-block bg-primary-700 text-white px-8 py-3 rounded-lg font-medium hover:bg-primary-700/90 transition-colors"
-        >
-          Schedule Now
-        </a>
-        <a
-          href="/gift-certificates"
-          class="inline-block bg-primary-50 text-primary-700 px-8 py-3 rounded-lg font-medium hover:bg-primary-50/80 transition-colors"
-        >
-          Gift Cards
-        </a>
-      </div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-4">
+        First-Time Guest? Enjoy $10 off your first 60-min massage.
+      </h2>
+      <a
+        href="#contact"
+        class="inline-block bg-white text-primary-700 px-8 py-3 rounded-lg font-medium hover:bg-white/90 transition-colors mt-4"
+      >
+        Book Now & Save
+      </a>
     </div>
   </section>
 </MainLayout>

@@ -1,0 +1,45 @@
+---
+interface Props {
+  items: {
+    quote: string;
+    author: string;
+  }[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="relative w-full overflow-hidden">
+  <div class="flex snap-x snap-mandatory overflow-x-auto scrollbar-hide">
+    {
+      items.map((item) => (
+        <div class="snap-center shrink-0 w-full px-4">
+          <blockquote class="text-lg md:text-xl italic text-dark/80 mb-4">
+            "{item.quote}"
+          </blockquote>
+          <p class="font-medium text-primary-700">- {item.author}</p>
+        </div>
+      ))
+    }
+  </div>
+  <div class="absolute bottom-0 left-0 right-0 flex justify-center gap-2 py-4">
+    {
+      items.map((_, i) => (
+        <button
+          class="w-2 h-2 rounded-full bg-primary-700/30 peer-checked:bg-primary-700"
+          aria-label={`Go to slide ${i + 1}`}
+        />
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+</style> 

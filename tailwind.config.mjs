@@ -4,17 +4,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: {
+        'primary': {
           50: '#f8f7f5',  // stone-50
           700: '#0f766e', // teal-700
         },
-        white: '#ffffff',
-        dark: '#0f172a',  // slate-900
+        'dark': '#0f172a',  // slate-900
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        'sans': ['Inter', 'system-ui', 'sans-serif'],
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }; 

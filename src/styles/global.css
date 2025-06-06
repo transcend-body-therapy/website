@@ -9,6 +9,6 @@
     font-family: 'Inter', system-ui, sans-serif;
   }
   body {
-    @apply bg-white text-dark;
+    @apply bg-primary-50 text-dark;
   }
 }

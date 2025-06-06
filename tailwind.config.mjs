@@ -9,6 +9,9 @@ export default {
           700: '#0f766e', // teal-700
         },
         'dark': '#0f172a',  // slate-900
+        'white': '#ffffff',
+        'transparent': 'transparent',
+        'current': 'currentColor',
       },
       fontFamily: {
         'sans': ['Inter', 'system-ui', 'sans-serif'],

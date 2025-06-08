@@ -53,7 +53,7 @@ export const handler: Handler = async (event) => {
     const emailResult = await resend.emails.send({
       from: 'Transcend Body Therapy <onboarding@resend.dev>',
       replyTo: data.email,
-      to: 'amy@ibisadvisory.com',
+      to: 'amy@chatables.com',
       subject: `Website Contact: ${data.name} - ${data.service || 'General Inquiry'}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">

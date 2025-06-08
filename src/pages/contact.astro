@@ -148,7 +148,7 @@ import MainLayout from '../layouts/MainLayout.astro';
     const data = Object.fromEntries(formData);
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('/.netlify/functions/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -21,9 +21,11 @@ export const handler: Handler = async (event) => {
 
   try {
     const data = JSON.parse(event.body || '') as ContactForm;
+    console.log('Received form data:', data);
     
     // Validate required fields
     if (!data.name || !data.email || !data.message) {
+      console.log('Missing required fields:', { name: !!data.name, email: !!data.email, message: !!data.message });
       return {
         statusCode: 400,
         body: JSON.stringify({ 
@@ -36,6 +38,7 @@ export const handler: Handler = async (event) => {
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(data.email)) {
+      console.log('Invalid email format:', data.email);
       return {
         statusCode: 400,
         body: JSON.stringify({ 
@@ -45,8 +48,9 @@ export const handler: Handler = async (event) => {
       };
     }
 
+    console.log('Attempting to send email via Resend...');
     // Send email via Resend
-    await resend.emails.send({
+    const emailResult = await resend.emails.send({
       from: 'Transcend Body Therapy <contact@transcendbodytherapy.com>',
       to: 'amy@ibisadvisory.com',
       subject: `New Contact Form Submission from ${data.name}`,
@@ -60,6 +64,7 @@ export const handler: Handler = async (event) => {
         <p>${data.message.replace(/\n/g, '<br>')}</p>
       `,
     });
+    console.log('Email sent successfully:', emailResult);
 
     return {
       statusCode: 200,
@@ -67,11 +72,17 @@ export const handler: Handler = async (event) => {
     };
   } catch (error) {
     console.error('Error processing contact form:', error);
+    // Log more details about the error
+    if (error instanceof Error) {
+      console.error('Error name:', error.name);
+      console.error('Error message:', error.message);
+      console.error('Error stack:', error.stack);
+    }
     return {
       statusCode: 500,
       body: JSON.stringify({ 
         success: false, 
-        message: 'Error processing request' 
+        message: error instanceof Error ? error.message : 'Error processing request' 
       }),
     };
   }

@@ -138,7 +138,7 @@ import MainLayout from '../layouts/MainLayout.astro';
       
       setTimeout(() => {
         toast.classList.add('translate-x-full');
-      }, 3000);
+      }, 5000);
     }
   };
 
@@ -148,6 +148,7 @@ import MainLayout from '../layouts/MainLayout.astro';
     const data = Object.fromEntries(formData);
 
     try {
+      console.log('Submitting form data:', data);
       const response = await fetch('/.netlify/functions/contact', {
         method: 'POST',
         headers: {
@@ -156,17 +157,19 @@ import MainLayout from '../layouts/MainLayout.astro';
         body: JSON.stringify(data),
       });
 
+      console.log('Response status:', response.status);
       const result = await response.json();
+      console.log('Response data:', result);
 
       if (result.success) {
-        showToast('Message sent successfully!');
+        showToast('Message sent successfully! We will get back to you soon.');
         form.reset();
       } else {
         showToast(result.message || 'Failed to send message', true);
       }
     } catch (error) {
+      console.error('Error submitting form:', error);
       showToast('Sorry, there was an error sending your message', true);
-      console.error('Error:', error);
     }
   });
 </script> 

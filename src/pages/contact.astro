@@ -166,11 +166,11 @@ import MainLayout from '../layouts/MainLayout.astro';
         showToast('Message sent successfully! We will get back to you soon.');
         form.reset();
       } else {
-        showToast(result.message || 'Failed to send message', true);
+        showToast(result.message || 'Failed to send message. Please try again later.', true);
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      showToast('Sorry, there was an error sending your message', true);
+      showToast('Sorry, there was an error sending your message. Please try again later.', true);
     }
   });
 </script> 

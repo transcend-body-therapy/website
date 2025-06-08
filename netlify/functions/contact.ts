@@ -52,19 +52,42 @@ export const handler: Handler = async (event) => {
     // Send email via Resend
     const emailResult = await resend.emails.send({
       from: 'Transcend Body Therapy <onboarding@resend.dev>',
+      replyTo: data.email,
       to: 'amy@ibisadvisory.com',
-      subject: `New Contact Form Submission from ${data.name}`,
+      subject: `Website Contact: ${data.name} - ${data.service || 'General Inquiry'}`,
       html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${data.name}</p>
-        <p><strong>Email:</strong> ${data.email}</p>
-        ${data.phone ? `<p><strong>Phone:</strong> ${data.phone}</p>` : ''}
-        ${data.service ? `<p><strong>Service:</strong> ${data.service}</p>` : ''}
-        <p><strong>Message:</strong></p>
-        <p>${data.message.replace(/\n/g, '<br>')}</p>
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #333;">New Website Contact Form Submission</h2>
+          <div style="background-color: #f5f5f5; padding: 20px; border-radius: 5px;">
+            <p><strong>Name:</strong> ${data.name}</p>
+            <p><strong>Email:</strong> ${data.email}</p>
+            ${data.phone ? `<p><strong>Phone:</strong> ${data.phone}</p>` : ''}
+            ${data.service ? `<p><strong>Service:</strong> ${data.service}</p>` : ''}
+            <p><strong>Message:</strong></p>
+            <div style="background-color: white; padding: 15px; border-radius: 3px;">
+              ${data.message.replace(/\n/g, '<br>')}
+            </div>
+          </div>
+          <p style="color: #666; font-size: 12px; margin-top: 20px;">
+            This message was sent from the Transcend Body Therapy website contact form.
+          </p>
+        </div>
       `,
     });
-    console.log('Email sent successfully:', emailResult);
+
+    console.log('Resend API Response:', emailResult);
+
+    // Check if there was an error in the response
+    if (emailResult.error) {
+      console.error('Error sending email:', emailResult.error);
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ 
+          success: false, 
+          message: emailResult.error.message || 'Failed to send email'
+        }),
+      };
+    }
 
     return {
       statusCode: 200,

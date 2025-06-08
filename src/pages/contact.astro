@@ -3,11 +3,19 @@ import MainLayout from '../layouts/MainLayout.astro';
 ---
 
 <MainLayout
-  title="Contact Us"
+  title="Contact Us | Transcend Body Therapy"
   description="Get in touch with Transcend Body Therapy to schedule your appointment or ask any questions."
 >
   <div class="bg-white py-16 md:py-24">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Toast Notification -->
+      <div
+        id="toast"
+        class="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300"
+      >
+        Message sent successfully!
+      </div>
+
       <div class="text-center mb-12">
         <h1 class="text-4xl font-bold text-primary-700 mb-4">Contact Us</h1>
         <p class="text-lg text-dark/80">
@@ -16,8 +24,7 @@ import MainLayout from '../layouts/MainLayout.astro';
       </div>
 
       <form
-        action="/api/contact"
-        method="POST"
+        id="contactForm"
         class="bg-primary-50 rounded-lg p-8 shadow-sm"
       >
         <div class="space-y-6">
@@ -109,9 +116,9 @@ import MainLayout from '../layouts/MainLayout.astro';
       <div class="mt-12 text-center">
         <h2 class="text-2xl font-semibold text-primary-700 mb-4">Other Ways to Reach Us</h2>
         <div class="space-y-2 text-dark/80">
-          <p>Phone: (503) 555-0123</p>
+          <p>Phone: (772) 555-0123</p>
           <p>Email: info@transcendbodytherapy.com</p>
-          <p>Address: 123 Healing Street, Suite 100, Portland, OR 97201</p>
+          <p>Address: 123 Healing Street, Suite 100, Stuart, FL 34994</p>
         </div>
       </div>
     </div>
@@ -119,11 +126,25 @@ import MainLayout from '../layouts/MainLayout.astro';
 </MainLayout>
 
 <script>
-  // Basic form handling
-  const form = document.querySelector('form');
+  const form = document.getElementById('contactForm') as HTMLFormElement;
+  const toast = document.getElementById('toast');
+
+  const showToast = (message: string, isError = false) => {
+    if (toast) {
+      toast.textContent = message;
+      toast.classList.remove('translate-x-full');
+      toast.classList.remove('bg-green-500', 'bg-red-500');
+      toast.classList.add(isError ? 'bg-red-500' : 'bg-green-500');
+      
+      setTimeout(() => {
+        toast.classList.add('translate-x-full');
+      }, 3000);
+    }
+  };
+
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
+    const formData = new FormData(form);
     const data = Object.fromEntries(formData);
 
     try {
@@ -135,14 +156,16 @@ import MainLayout from '../layouts/MainLayout.astro';
         body: JSON.stringify(data),
       });
 
-      if (response.ok) {
-        alert('Thank you for your message. We will get back to you soon!');
-        (e.target as HTMLFormElement).reset();
+      const result = await response.json();
+
+      if (result.success) {
+        showToast('Message sent successfully!');
+        form.reset();
       } else {
-        throw new Error('Failed to send message');
+        showToast(result.message || 'Failed to send message', true);
       }
     } catch (error) {
-      alert('Sorry, there was an error sending your message. Please try again later.');
+      showToast('Sorry, there was an error sending your message', true);
       console.error('Error:', error);
     }
   });

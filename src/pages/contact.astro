@@ -11,7 +11,7 @@ import MainLayout from '../layouts/MainLayout.astro';
       <!-- Toast Notification -->
       <div
         id="toast"
-        class="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300"
+        class="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300 z-50 text-lg font-medium"
       >
         Message sent successfully!
       </div>
@@ -135,10 +135,11 @@ import MainLayout from '../layouts/MainLayout.astro';
       toast.classList.remove('translate-x-full');
       toast.classList.remove('bg-green-500', 'bg-red-500');
       toast.classList.add(isError ? 'bg-red-500' : 'bg-green-500');
+      toast.style.opacity = '1';
       
       setTimeout(() => {
         toast.classList.add('translate-x-full');
-      }, 5000);
+      }, 8000);
     }
   };
 

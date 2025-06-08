@@ -51,7 +51,7 @@ export const handler: Handler = async (event) => {
     console.log('Attempting to send email via Resend...');
     // Send email via Resend
     const emailResult = await resend.emails.send({
-      from: 'Transcend Body Therapy <contact@transcendbodytherapy.com>',
+      from: 'Transcend Body Therapy <onboarding@resend.dev>',
       to: 'amy@ibisadvisory.com',
       subject: `New Contact Form Submission from ${data.name}`,
       html: `

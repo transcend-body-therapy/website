@@ -7,7 +7,7 @@ export default {
         ivory: '#FAF8F6',
         sage:  { DEFAULT: '#768973', 700: '#566a59' },
         rose:  { DEFAULT: '#C89FAC', 700: '#9D7888' },
-        slate: '#444',
+        'custom-slate': '#444',
       },
       fontFamily: {
         head: ['"Playfair Display"', 'serif'],
@@ -16,4 +16,7 @@ export default {
     },
   },
   plugins: [],
+  corePlugins: {
+    textColor: true,
+  },
 }; 

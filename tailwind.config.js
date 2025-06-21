@@ -13,7 +13,7 @@ export default {
           DEFAULT: '#C89FAC',
           700: '#9D7888'
         },
-        slate: '#444'
+        'custom-slate': '#444'
       },
       fontFamily: {
         head: ['Playfair Display', 'serif'],

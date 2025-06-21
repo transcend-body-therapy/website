@@ -9,19 +9,19 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/netlify": "^6.3.4",
-    "astro": "^5.9.0",
+    "@astrojs/netlify": "^5.5.4",
+    "astro": "^4.16.18",
     "resend": "^4.5.2"
   },
   "devDependencies": {
-    "@astrojs/tailwind": "5.1.0",
-    "@netlify/functions": "^4.1.4",
+    "@netlify/functions": "^4.1.6",
     "@tailwindcss/typography": "0.5.10",
+    "@tailwindcss/vite": "^4.1.10",
     "@types/stripe": "^8.0.417",
     "@typescript-eslint/eslint-plugin": "^8.33.1",
     "@typescript-eslint/parser": "^8.33.1",
     "autoprefixer": "10.4.17",
-    "eslint": "^9.28.0",
+    "eslint": "^9.29.0",
     "eslint-plugin-astro": "^1.3.1",
     "postcss": "8.4.35",
     "prettier": "^3.5.3",

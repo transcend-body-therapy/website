@@ -6,20 +6,26 @@ const services = [
   {
     title: 'Massage Therapy',
     description: 'Experience relief from tension and stress through our customized massage treatments.',
+    benefits: ['Pain relief', 'Muscle relaxation', 'Improved circulation', 'Stress reduction'],
     image: '/images/massage.jpg',
     link: '/services/massage',
+    duration: '60-90 minutes',
   },
   {
     title: 'Energy Work',
     description: 'Restore balance and vitality with our holistic energy healing techniques.',
+    benefits: ['Energy balancing', 'Chakra alignment', 'Emotional release', 'Spiritual connection'],
     image: '/images/energy.jpg',
     link: '/services/energy',
+    duration: '45-60 minutes',
   },
   {
     title: 'Combo Packages',
     description: 'The best of both worlds: massage therapy combined with energy work for complete healing.',
+    benefits: ['Deep relaxation', 'Physical & energetic healing', 'Stress relief', 'Enhanced well-being'],
     image: '/images/combo.jpg',
     link: '/services/combo',
+    duration: '90-120 minutes',
   },
 ];
 
@@ -84,7 +90,7 @@ const testimonials = [
       <h2 class="text-4xl md:text-5xl font-head text-center mb-16 text-sage">Our Services</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {
-          services.map(({ title, description, image, link }) => (
+          services.map(({ title, description, benefits, duration, image, link }) => (
             <a
               href={link}
               class="group block overflow-hidden rounded-2xl bg-white shadow-sm hover:shadow-lg transition-all duration-300"
@@ -98,7 +104,14 @@ const testimonials = [
               </div>
               <div class="p-8">
                 <h3 class="text-2xl font-head text-sage mb-4">{title}</h3>
-                <p class="text-custom-slate/80 font-body leading-relaxed">{description}</p>
+                <p class="text-custom-slate/80 font-body leading-relaxed mb-4">{description}</p>
+                <p class="text-sm text-sage mb-4">Duration: {duration}</p>
+                <h4 class="text-lg font-medium text-sage mb-2">Benefits:</h4>
+                <ul class="list-disc list-inside text-custom-slate/80 mb-6">
+                  {benefits.map((benefit) => (
+                    <li>{benefit}</li>
+                  ))}
+                </ul>
                 <div class="mt-6 flex items-center text-sage">
                   <span class="text-sm font-medium">Learn more</span>
                   <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">

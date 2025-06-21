@@ -18,90 +18,91 @@ import MainLayout from '../layouts/MainLayout.astro';
 
       <div class="text-center mb-12">
         <h1 class="text-4xl font-bold text-primary-700 mb-4">Contact Us</h1>
-        <p class="text-lg text-dark/80">
-          Ready to begin your healing journey? Get in touch with us today.
+        <p class="text-lg text-slate-700">
+          We're here to help you on your healing journey. Reach out to schedule an appointment or ask any questions.
         </p>
       </div>
 
-      <form
-        id="contactForm"
-        class="bg-gray-50 rounded-lg p-8 shadow-sm"
-      >
-        <div class="space-y-6">
-          <!-- Name -->
-          <div>
-            <label for="name" class="block text-sm font-medium text-dark mb-2">
-              Name
-            </label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              required
-              class="w-full px-4 py-2 rounded-lg border border-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-700"
-            />
-          </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Contact Form -->
+        <form
+          id="contactForm"
+          class="bg-gray-50 rounded-lg p-8 shadow-sm"
+        >
+          <div class="space-y-6">
+            <!-- Name -->
+            <div>
+              <label for="name" class="block text-sm font-medium text-slate-900 mb-2">
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+              />
+            </div>
 
-          <!-- Email -->
-          <div>
-            <label for="email" class="block text-sm font-medium text-dark mb-2">
-              Email
-            </label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              required
-              class="w-full px-4 py-2 rounded-lg border border-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-700"
-            />
-          </div>
+            <!-- Email -->
+            <div>
+              <label for="email" class="block text-sm font-medium text-slate-900 mb-2">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+              />
+            </div>
 
-          <!-- Phone -->
-          <div>
-            <label for="phone" class="block text-sm font-medium text-dark mb-2">
-              Phone
-            </label>
-            <input
-              type="tel"
-              name="phone"
-              id="phone"
-              class="w-full px-4 py-2 rounded-lg border border-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-700"
-            />
-          </div>
+            <!-- Phone -->
+            <div>
+              <label for="phone" class="block text-sm font-medium text-slate-900 mb-2">
+                Phone
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+              />
+            </div>
 
-          <!-- Service -->
-          <div>
-            <label for="service" class="block text-sm font-medium text-dark mb-2">
-              Interested Service
-            </label>
-            <select
-              name="service"
-              id="service"
-              required
-              class="w-full px-4 py-2 rounded-lg border border-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-700"
-            >
-              <option value="">Select a service</option>
-              <option value="massage">Massage Therapy</option>
-              <option value="energy">Energy Work</option>
-              <option value="combo">Combination Therapy</option>
-            </select>
-          </div>
+            <!-- Service -->
+            <div>
+              <label for="service" class="block text-sm font-medium text-slate-900 mb-2">
+                Service of Interest
+              </label>
+              <select
+                id="service"
+                name="service"
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+              >
+                <option value="">Select a service...</option>
+                <option value="massage">Therapeutic Massage</option>
+                <option value="energy">Energy Healing</option>
+                <option value="combination">Combination Therapy</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
 
-          <!-- Message -->
-          <div>
-            <label for="message" class="block text-sm font-medium text-dark mb-2">
-              Message
-            </label>
-            <textarea
-              name="message"
-              id="message"
-              rows="4"
-              class="w-full px-4 py-2 rounded-lg border border-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-700"
-            ></textarea>
-          </div>
+            <!-- Message -->
+            <div>
+              <label for="message" class="block text-sm font-medium text-slate-900 mb-2">
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                required
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+              ></textarea>
+            </div>
 
-          <!-- Submit Button -->
-          <div>
             <button
               type="submit"
               class="w-full bg-primary-700 text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-700/90 transition-colors"
@@ -109,16 +110,16 @@ import MainLayout from '../layouts/MainLayout.astro';
               Send Message
             </button>
           </div>
-        </div>
-      </form>
+        </form>
 
-      <!-- Contact Information -->
-      <div class="mt-12 text-center">
-        <h2 class="text-2xl font-semibold text-primary-700 mb-4">Other Ways to Reach Us</h2>
-        <div class="space-y-2 text-dark/80">
-          <p>Phone: (772) 555-0123</p>
-          <p>Email: info@transcendbodytherapy.com</p>
-          <p>Address: 1207 SW Sunset Trail, Palm City, FL 34990</p>
+        <!-- Contact Information -->
+        <div class="space-y-8">
+          <div class="space-y-2 text-slate-700">
+            <h2 class="text-2xl font-semibold text-primary-700 mb-4">Other Ways to Reach Us</h2>
+            <p>Phone: (772) 555-0123</p>
+            <p>Email: info@transcendbodytherapy.com</p>
+            <p>Address: 1207 SW Sunset Trail, Palm City, FL 34990</p>
+          </div>
         </div>
       </div>
     </div>

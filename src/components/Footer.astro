@@ -21,26 +21,33 @@ const businessInfo = {
 
       <!-- Address and Phone -->
       <div class="text-center md:text-left">
-        <p class="text-dark/80">{businessInfo.address}</p>
-        <p class="text-dark/80">{businessInfo.city}</p>
-        <a href={`tel:${businessInfo.phone}`} class="text-primary-700 hover:text-primary-700/80">
-          {businessInfo.phone}
-        </a>
+        <div class="space-y-1">
+          <h3 class="text-lg font-semibold text-primary-700">Visit Us</h3>
+          <p class="text-slate-700">{businessInfo.address}</p>
+          <p class="text-slate-700">{businessInfo.city}</p>
+        </div>
+
+        <div class="space-y-1">
+          <h3 class="text-lg font-semibold text-primary-700">Contact</h3>
+          <p class="text-slate-700">
+            Phone: {businessInfo.phone}
+          </p>
+        </div>
       </div>
 
       <!-- Hours -->
       <div class="text-center md:text-left">
-        <p class="text-dark/80">
+        <p class="text-slate-700">
           Mon-Fri: {businessInfo.hours.weekdays}
         </p>
-        <p class="text-dark/80">
+        <p class="text-slate-700">
           Sat-Sun: {businessInfo.hours.weekends}
         </p>
       </div>
     </div>
 
     <!-- Copyright -->
-    <div class="mt-8 pt-8 border-t border-primary-50 text-center text-sm text-dark/60">
+    <div class="mt-8 pt-8 border-t border-gray-200 text-center text-sm text-slate-600">
       <p>&copy; {new Date().getFullYear()} {businessInfo.name}. All rights reserved.</p>
     </div>
   </div>
